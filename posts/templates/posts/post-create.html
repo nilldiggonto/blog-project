@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% url 'posts:create' as 'create' %}
+
+{%  block head_tag %} {%if 'create' in request.path %} Create {%else %}Update {% endif %} {% endblock head_tag %}
+
+
+
+{% load bootstrap4 %}
+
+{% block content %}
+
+<div class="container">
+
+   <div class="row">
+      <div class="col-md-8 offset-md-2">
+         <form action="" class="mb-3" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+        
+            <input type="submit" value="Done" class="btn btn-outline-info">
+         </form>
+      </div>
+   </div>
+
+</div>
+
+
+{% endblock %}
